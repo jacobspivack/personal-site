@@ -1,0 +1,121 @@
+:root {
+  --background: #f6f7f8;
+
+  --text: #555555;
+  --heading: #3b3b3b;
+
+  --link: #2c5f8a;
+  --link-hover: #1d4567;
+
+  --font-body: "Lora", Georgia, serif;
+  --font-heading: "EB Garamond", Georgia, serif;
+
+  --page-width: 1100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 40px 48px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.hero p:last-child {
+  margin-bottom: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 44px;
+  align-items: start;
+}
+
+.column {
+  text-align: left;
+  min-width: 0;
+}
+
+.column h2 {
+  font-family: var(--font-heading);
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 14px;
+}
+
+.column p {
+  margin-bottom: 11px;
+}
+
+.column strong {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 30px 24px;
+  }
+
+  .hero {
+    margin-bottom: 34px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .column h2 {
+    font-size: 23px;
+  }
+}
