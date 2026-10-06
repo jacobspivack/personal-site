@@ -4,7 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jacob Spivack</title>
-    <link rel="stylesheet" href="index.css" />
+    <style>
+      /* Layout critical — avoids stale cached CSS */
+      html,
+      body {
+        width: 100%;
+        margin: 0;
+      }
+      .page {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 48px 80px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 44px;
+        width: 100%;
+      }
+      @media (max-width: 900px) {
+        .page {
+          padding: 30px 28px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="site.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -41,6 +70,12 @@
             A C++ search tool emulating grep, built with a custom hash table,
             memory-efficient indexing, and recursive directory traversal.
           </p>
+          <p>
+            <strong>SpeakOUT</strong><br />
+            Full-stack scheduling app for SpeakOUT Boston, with Next.js/Prisma
+            APIs and React UI for coordinating speakers across hundreds of
+            events.
+          </p>
         </div>
 
         <div class="column">
@@ -57,6 +92,10 @@
             <strong>Jumbocode Developer</strong><br />
             Tufts University
           </p>
+          <p>
+            <strong>Trip Leader</strong><br />
+            Tufts Wilderness Orientation
+          </p>
         </div>
 
         <div class="column">
@@ -68,8 +107,8 @@
           </p>
           <p>
             <strong>Technologies</strong><br />
-            Git/GitHub, CLI, LaTeX, Valgrind, Gradescope, React, Shell
-            Scripting, Makefiles, GDB
+            Git/GitHub, CLI, LaTeX, Valgrind, Gradescope, React, Next.js,
+            Tailwind CSS, Prisma, PostgreSQL, Shell Scripting, Makefiles, GDB
           </p>
         </div>
 
@@ -84,11 +123,33 @@
           <p>
             <a href="https://github.com/jacobspivack">GitHub</a>
           </p>
-          <p>
-            <a href="mailto:jacobspivack.js@gmail.com">Email</a>
+          <p class="email-reveal">
+            <button type="button" class="email-label" id="email-label">
+              Email
+            </button>
+            <span class="email-address" id="email-address" hidden
+              >jacobspivack dot js at gmail dot com</span
+            >
           </p>
         </div>
       </section>
     </main>
+    <script>
+      (function () {
+        var wrap = document.querySelector(".email-reveal");
+        var address = document.getElementById("email-address");
+        if (!wrap || !address) return;
+        function show() {
+          address.hidden = false;
+        }
+        function hide() {
+          address.hidden = true;
+        }
+        wrap.addEventListener("mouseenter", show);
+        wrap.addEventListener("mouseleave", hide);
+        wrap.addEventListener("focusin", show);
+        wrap.addEventListener("focusout", hide);
+      })();
+    </script>
   </body>
 </html>

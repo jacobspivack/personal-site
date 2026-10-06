@@ -1,0 +1,162 @@
+:root {
+  --background: #f6f7f8;
+
+  --text: #555555;
+  --heading: #3b3b3b;
+
+  --link: #2c5f8a;
+  --link-hover: #1d4567;
+
+  --font-body: "Lora", Georgia, serif;
+  --font-heading: "EB Garamond", Georgia, serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 48px 80px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.hero p:last-child {
+  margin-bottom: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 44px;
+  align-items: start;
+  width: 100%;
+}
+
+.column {
+  text-align: left;
+  min-width: 0;
+}
+
+.column h2 {
+  font-family: var(--font-heading);
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 14px;
+}
+
+.column p {
+  margin-bottom: 11px;
+}
+
+.column strong {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.email-reveal {
+  margin-bottom: 11px;
+}
+
+.email-label {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--link);
+  cursor: pointer;
+  text-align: left;
+}
+
+.email-label:hover,
+.email-label:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+.email-address {
+  display: block;
+  margin-top: 2px;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.email-address[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 30px 28px;
+  }
+
+  .hero {
+    margin-bottom: 34px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .column h2 {
+    font-size: 23px;
+  }
+}
