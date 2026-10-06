@@ -1,30 +1,31 @@
 :root {
   --background: #f6f7f8;
-
   --text: #555555;
   --heading: #3b3b3b;
-
   --link: #2c5f8a;
-  --link-hover: #1d4567;
-
   --font-body: "Lora", Georgia, serif;
   --font-heading: "EB Garamond", Georgia, serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
+html {
   margin: 0;
+  padding: 0;
+  height: auto;
+  overflow-y: scroll;
 }
 
 body {
-  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 0;
+  overflow: visible;
   background: var(--background);
   color: var(--text);
   font-family: var(--font-body);
@@ -33,11 +34,10 @@ body {
 }
 
 .page {
-  box-sizing: border-box;
   width: 100%;
-  max-width: 100%;
   margin: 0 auto;
-  padding: 48px 80px;
+  padding: 48px 80px 96px;
+  overflow: visible;
 }
 
 .hero {
@@ -50,16 +50,30 @@ body {
   font-size: 46px;
   font-weight: 600;
   color: var(--heading);
-  margin-bottom: 18px;
+  margin: 0 0 18px;
 }
 
 .hero p {
   font-size: 16px;
-  margin-bottom: 14px;
+  margin: 0 0 14px;
 }
 
-.hero p:last-child {
-  margin-bottom: 0;
+.hero-links {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  margin-top: 18px;
+  position: relative;
+}
+
+.hero-links a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.hero-links a:hover {
+  text-decoration: underline;
 }
 
 .grid {
@@ -68,11 +82,13 @@ body {
   gap: 44px;
   align-items: start;
   width: 100%;
+  overflow: visible;
 }
 
 .column {
   text-align: left;
   min-width: 0;
+  overflow: visible;
 }
 
 .column h2 {
@@ -80,11 +96,13 @@ body {
   font-size: 25px;
   font-weight: 600;
   color: var(--heading);
-  margin-bottom: 14px;
+  margin: 0 0 14px;
 }
 
 .column p {
-  margin-bottom: 11px;
+  margin: 0 0 11px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .column strong {
@@ -102,7 +120,25 @@ a:hover {
 }
 
 .email-reveal {
-  margin-bottom: 11px;
+  margin: 0 0 11px;
+}
+
+.hero-links .email-reveal {
+  margin: 0;
+  position: static;
+}
+
+.hero-links .email-address {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0;
+  width: max-content;
+  max-width: min(100%, calc(100vw - 48px));
+  white-space: normal;
+  text-align: center;
+  z-index: 1;
 }
 
 .email-label {
@@ -114,7 +150,6 @@ a:hover {
   font: inherit;
   color: var(--link);
   cursor: pointer;
-  text-align: left;
 }
 
 .email-label:hover,
@@ -134,29 +169,47 @@ a:hover {
   display: none !important;
 }
 
+.page-end {
+  height: 48px;
+}
+
 @media (max-width: 900px) {
   .page {
-    padding: 30px 28px;
+    padding: 28px 24px 120px;
   }
 
   .hero {
-    margin-bottom: 34px;
+    margin-bottom: 28px;
   }
 
   .hero h1 {
-    font-size: 38px;
+    font-size: 36px;
   }
 
   .hero p {
     font-size: 15px;
   }
 
+  .hero-links {
+    display: flex;
+  }
+
   .grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    display: block;
+    width: 100%;
+  }
+
+  .column {
+    display: block;
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  .column.column-links {
+    display: none;
   }
 
   .column h2 {
-    font-size: 23px;
+    font-size: 22px;
   }
 }

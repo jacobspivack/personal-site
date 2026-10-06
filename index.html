@@ -2,38 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Jacob Spivack</title>
-    <style>
-      /* Layout critical — avoids stale cached CSS */
-      html,
-      body {
-        width: 100%;
-        margin: 0;
-      }
-      .page {
-        box-sizing: border-box;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 48px 80px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 44px;
-        width: 100%;
-      }
-      @media (max-width: 900px) {
-        .page {
-          padding: 30px 28px;
-        }
-        .grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="site.css" />
+    <link rel="stylesheet" href="main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -54,6 +28,18 @@
           Interested in software engineering, computer systems, and computer
           science education.
         </p>
+
+        <nav class="hero-links" aria-label="Links">
+          <a href="Jacob-Spivack-Resume.pdf">Resume</a>
+          <a href="https://www.linkedin.com/in/jacobspivack">LinkedIn</a>
+          <a href="https://github.com/jacobspivack">GitHub</a>
+          <span class="email-reveal">
+            <button type="button" class="email-label">Email</button>
+            <span class="email-address" hidden
+              >jacobspivack dot js at gmail dot com</span
+            >
+          </span>
+        </nav>
       </header>
 
       <section class="grid">
@@ -107,12 +93,13 @@
           </p>
           <p>
             <strong>Technologies</strong><br />
-            Git/GitHub, CLI, LaTeX, Valgrind, Gradescope, React, Next.js,
-            Tailwind CSS, Prisma, PostgreSQL, Shell Scripting, Makefiles, GDB
+            Git/GitHub, CLI, LaTeX, Valgrind, Gradescope,<br />
+            React, Next.js, Tailwind CSS, Prisma, PostgreSQL,<br />
+            Shell Scripting, Makefiles, GDB
           </p>
         </div>
 
-        <div class="column">
+        <div class="column column-links">
           <h2>Links</h2>
           <p>
             <a href="Jacob-Spivack-Resume.pdf">Resume</a>
@@ -124,31 +111,43 @@
             <a href="https://github.com/jacobspivack">GitHub</a>
           </p>
           <p class="email-reveal">
-            <button type="button" class="email-label" id="email-label">
-              Email
-            </button>
-            <span class="email-address" id="email-address" hidden
+            <button type="button" class="email-label">Email</button>
+            <span class="email-address" hidden
               >jacobspivack dot js at gmail dot com</span
             >
           </p>
         </div>
       </section>
+
+      <div class="page-end" aria-hidden="true"></div>
     </main>
+
     <script>
       (function () {
-        var wrap = document.querySelector(".email-reveal");
-        var address = document.getElementById("email-address");
-        if (!wrap || !address) return;
-        function show() {
-          address.hidden = false;
-        }
-        function hide() {
-          address.hidden = true;
-        }
-        wrap.addEventListener("mouseenter", show);
-        wrap.addEventListener("mouseleave", hide);
-        wrap.addEventListener("focusin", show);
-        wrap.addEventListener("focusout", hide);
+        document.querySelectorAll(".email-reveal").forEach(function (wrap) {
+          var address = wrap.querySelector(".email-address");
+          var label = wrap.querySelector(".email-label");
+          if (!address || !label) return;
+
+          function show() {
+            address.hidden = false;
+          }
+          function hide() {
+            address.hidden = true;
+          }
+          function toggle(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            address.hidden = !address.hidden;
+          }
+
+          label.addEventListener("click", toggle);
+          wrap.addEventListener("mouseenter", show);
+          wrap.addEventListener("mouseleave", hide);
+          document.addEventListener("click", function (e) {
+            if (!wrap.contains(e.target)) hide();
+          });
+        });
       })();
     </script>
   </body>
